@@ -7,7 +7,7 @@ import net from "net";
 
 const WSPORT = process.env.PORT || 8080; // Render assigns PORT automatically
 const MC_HOST = "bloodbath321.aternos.me"; // your Aternos server
-const MC_PORT = 25565; // default Minecraft port
+const MC_PORT = 16708; // your Aternos server port
 
 // Create WebSocket server for browser clients
 const wss = new WebSocketServer({ port: WSPORT });
@@ -17,7 +17,7 @@ wss.on("connection", (ws) => {
 
   // Connect to the Aternos Minecraft server
   const mcSocket = net.createConnection(MC_PORT, MC_HOST, () => {
-    console.log("Connected to Minecraft server at " + MC_HOST);
+    console.log(`Connected to Minecraft server at ${MC_HOST}:${MC_PORT}`);
   });
 
   // Forward Minecraft → Browser
